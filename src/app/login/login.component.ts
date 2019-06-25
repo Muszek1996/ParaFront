@@ -4,9 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AuthenticationService } from '../_services/authentication.service';
-import {templateJitUrl} from '@angular/compiler';
 
-@Component({templateUrl: 'login.component.html'})
+
+@Component({
+  selector: 'app-login',
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css']
+})
 export class LoginComponent implements OnInit {
 
   constructor(
