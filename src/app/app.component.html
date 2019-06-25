@@ -2,9 +2,18 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="navbar-nav">
     <a class="nav-item nav-link" routerLink="/">Home</a>
-    <a class="nav-item nav-link" routerLink="/login">Login</a>
-    <a class="nav-item nav-link" routerLink="/register">Register</a>
+
   </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" [routerLink]="isLogged?['/login']:['/logout']" class="nav-item text-primary">
+        <a *ngIf="isLogged; else elseBlock" class="nav-item" >Login</a>
+        <ng-template #elseBlock>Logout</ng-template>
+      </li>
+    </ul>
+  </div>
+
+
 </nav>
 
 <!-- main content container -->

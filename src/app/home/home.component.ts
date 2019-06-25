@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
-
-import { User } from '../_models/user';
-import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +6,7 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  users: User[] = [];
-
-  constructor(private userService: UserService) {}
-
+  constructor() {}
   ngOnInit() {
-    this.userService.getAll().pipe(first()).subscribe(users => {
-      this.users = users;
-    });
   }
 }

@@ -10,13 +10,15 @@ import {RegisterComponent} from './register/register.component';
 import {appRoutingModule} from './app.routing';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {ErrorInterceptor} from './_helpers/error.interceptor';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

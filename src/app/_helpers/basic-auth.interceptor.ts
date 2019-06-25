@@ -10,11 +10,10 @@ export class BasicAuthInterceptor implements HttpInterceptor {
     if (currentUser && currentUser.authdata) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Basic ${currentUser.authdata}`
+          Authorization: currentUser.authdata
         }
       });
     }
-
     return next.handle(request);
   }
 }
