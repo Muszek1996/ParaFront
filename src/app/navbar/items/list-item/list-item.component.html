@@ -1,0 +1,35 @@
+<div class="col-md-6">
+  <h2> Items Details</h2>
+<!--  <button class="btn btn-secondary" (click)="addItem()"> Add Item</button>-->
+  <label>
+    <input [(ngModel)]="query">
+  </label>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <!--      <th class="hidden">Id</th>-->
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Tradeable</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items | search:'name':query">
+      <!--      <td class="hidden">{{item.id}}</td>-->
+      <td>{{item._id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.tradeable}}</td>
+
+      <td>
+        <div class="btn-item">
+<!--          <button *ngIf="adminGuard.isAdmin()" class="btn btn-danger" (click)="deleteItem(item)"> Delete</button>-->
+<!--          <button *ngIf="adminGuard.isAdmin()" class="btn btn-primary" (click)="editItem(item)" style="margin-left: 10px;"> Edit</button>-->
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

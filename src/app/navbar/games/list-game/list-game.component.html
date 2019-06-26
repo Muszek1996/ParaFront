@@ -1,0 +1,35 @@
+<div class="col-md-6">
+  <h2> Games Details</h2>
+  <button *ngIf="adminGuard.isAdmin()" class="btn btn-secondary" (click)="addGame()"> Add Game</button>
+  <label>
+    <input [(ngModel)]="query">
+  </label>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <!--      <th class="hidden">Id</th>-->
+      <th *ngIf="adminGuard.isAdmin()">ID</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let game of games | search:'title':query">
+      <!--      <td class="hidden">{{game.id}}</td>-->
+      <td *ngIf="adminGuard.isAdmin()">{{game._id}}</td>
+      <td>{{game.title}}</td>
+      <td>{{game.description}}</td>
+      <td>{{game.price}}</td>
+
+      <td>
+        <div class="btn-game">
+          <button *ngIf="adminGuard.isAdmin()" class="btn btn-danger" (click)="deleteGame(game)"> Delete</button>
+          <button *ngIf="adminGuard.isAdmin()" class="btn btn-primary" (click)="editGame(game)" style="margin-left: 10px;"> Edit</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
