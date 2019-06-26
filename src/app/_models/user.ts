@@ -3,6 +3,6 @@ export class User {
   email: string;
   name?: string;
   role: string;
-  items: Array<object>;
-  games: Array<object>;
+  items: string;
+  games: string;
 }

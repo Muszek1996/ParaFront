@@ -2,10 +2,10 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="navbar-nav">
     <a class="nav-item nav-link" routerLink="/">Home</a>
-    <a class="nav-item nav-link" routerLink="/users">Users</a>
-    <a class="nav-item nav-link" routerLink="/groups">Groups</a>
-    <a class="nav-item nav-link" routerLink="/games">Games</a>
-    <a class="nav-item nav-link" routerLink="/items">Items</a>
+    <a *ngIf="!isLogged" class="nav-item nav-link" routerLink="/users">Users</a>
+    <a class="nav-item nav-link" routerLink="/list-group">Groups</a>
+    <a class="nav-item nav-link" routerLink="/list-game">Games</a>
+    <a class="nav-item nav-link" routerLink="/list-item">Items</a>
 
   </div>
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">

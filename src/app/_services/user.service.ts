@@ -9,17 +9,27 @@ import {map} from 'rxjs/operators';
 export class UserService {
   constructor(private http: HttpClient) { }
 
-  getAllIds() {
+  getUsers() {
     return this.http.get<User[]>(`${environment.apiUrl}/users`);
   }
 
-  getAll() {
-    return this.getAllIds();
+  getUserById(id: any) {
+    return this.http.get<User>(`${environment.apiUrl}/users` + '/' + id);
   }
 
-
-  getUser(id) {
-    return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+  createUser(user: User) {
+    return this.http.post(`${environment.apiUrl}/users`, user);
   }
 
+  addUser(user: User) {
+    return this.http.post(`${environment.apiUrl}/users/add`, user);
+  }
+
+  updateUser(user: User) {
+    return this.http.put(`${environment.apiUrl}/users`, user);
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete(`${environment.apiUrl}/users` + '/' + id);
+  }
 }
