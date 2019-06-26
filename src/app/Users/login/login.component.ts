@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from '../_services/authentication.service';
+import { AuthenticationService } from '../../_services/authentication.service';
+import {handleError} from '../../_helpers/error.handler';
 
 
 @Component({
@@ -29,13 +30,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required]
     });
 
 
 
-
+    this.authenticationService.logout();
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
@@ -49,14 +50,13 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    const obs = this.authenticationService.login(this.f.username.value, this.f.password.value)
+    const obs = this.authenticationService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          console.log(error);
           this.error = error;
           this.loading = false;
         });

@@ -1,6 +1,6 @@
 import {AfterViewChecked, ChangeDetectorRef, Component} from '@angular/core';
 import {AuthGuard} from './_guards/auth.guard';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './Users/login/login.component';
 
 
 @Component({
