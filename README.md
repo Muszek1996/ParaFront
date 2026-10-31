@@ -1,27 +1,30 @@
 # ParaFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.4.
+Angular frontend for **Para**, a web app for managing users, groups, games and items. The backend lives in [Para](https://github.com/Muszek1996/Para) (Node.js, Express, MongoDB).
 
-## Development server
+## Features
+- Login, registration and logout with token auth (HTTP interceptor)
+- Route guards for logged-in users and admins
+- CRUD views for users, groups, games and items
+- Search and ID-to-name pipes, form validation (password match)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Setup
+Requires Node.js and the Angular CLI.
 
-## Code scaffolding
+```bash
+npm install
+npm start          # dev server at http://localhost:4200
+npm run build      # production build in dist/
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Set the backend URL in `src/environments/environment.ts` (`apiUrl`).
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Structure
+```
+src/app/Users/      login, register, logout
+src/app/navbar/     games, groups, items, users (list/add/edit), home
+src/app/_services/  API clients
+src/app/_guards/    auth and admin guards
+src/app/_helpers/   interceptors, pipes, validators
+src/app/_models/    data models
+```
